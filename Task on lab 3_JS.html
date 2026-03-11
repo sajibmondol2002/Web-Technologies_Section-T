@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Form</title>
+</head>
+<body>
+
+<h1>Test Form</h1>
+
+<form id="myForm">
+
+<label for="username">Username:</label>
+<input type="text" name="username" id="username" oninput="showUppercase()">
+<span style="color:red" id="usernameErrMsg"></span>
+<br><br>
+
+<label for="password">Password:</label>
+<input type="password" name="password" id="password" oninput="showUppercase()">
+<span style="color:red" id="passwordErrMsg"></span>
+<br><br>
+
+<input type="submit">
+
+</form>
+
+<br>
+<p id="result" style="font-weight:bold;"></p>
+
+<script>
+
+function showUppercase() {
+
+let username = document.getElementById("username").value.toUpperCase();
+let password = document.getElementById("password").value.toUpperCase();
+
+document.getElementById("result").innerHTML =
+"USERNAME: " + username + "<br>PASSWORD: " + password;
+
+}
+
+</script>
+
+</body>
+</html>
