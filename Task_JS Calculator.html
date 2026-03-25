@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dcdcdc;
+    font-family: Arial;
+}
+
+.calculator {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 260px;
+}
+
+.display {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    text-align: right;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.operator {
+    background: orange;
+    color: white;
+}
+
+.equal {
+    background: green;
+    color: white;
+    grid-column: span 2;
+}
+
+.clear {
+    background: red;
+    color: white;
+    grid-column: span 2;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="calculator">
+
+    <input type="text" class="display" id="display" readonly>
+
+    <div class="buttons">
+        <button class="clear">C</button>
+        <button class="operator">/</button>
+        <button class="operator">*</button>
+
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">-</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">+</button>
+
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+
+        <button class="equal">=</button>
+        <button>0</button>
+        <button>.</button>
+    </div>
+
+</div>
+
+<script>
+
+const display = document.getElementById("display");
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+
+        const value = button.innerText;
+
+        if (value === "C") {
+            display.value = "";
+        }
+        else if (value === "=") {
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = "Error";
+            }
+        }
+        else {
+            display.value += value;
+        }
+
+    });
+});
+
+</script>
+
+</body>
+</html>
